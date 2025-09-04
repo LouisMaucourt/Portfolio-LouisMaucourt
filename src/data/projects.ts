@@ -8,7 +8,7 @@ export interface Project {
     howItWork:string,
     technologie:string[],
     video?:string
-    websiteLink:string;
+    websiteLink?:string;
 }
 
 export const projectData: Project[] = [
@@ -39,7 +39,6 @@ Automated email workflows and MailChimp integration were added to streamline cli
         title: "Hitoko",
         description: "A complete web application that centralizes grades, attendance, schedules, and management for students, teachers, and administrators.",
         slug: "hitoko",
-        websiteLink: "https://clementgrellier.fr/desdoigts",
         imgs: [
             "/projects/hitoko.webp",
             "/projects/hitoko-2.webp",

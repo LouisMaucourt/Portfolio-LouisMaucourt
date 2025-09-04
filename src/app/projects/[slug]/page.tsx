@@ -73,12 +73,14 @@ export default async function ProjectPage({ params }: Props) {
           </video>
         </div>
       )}
-      <div className="flex justify-between items-center">
-        <TitleAnimation text={project.title} />
-        <Button href={project.websiteLink} className="h-min">
-          View Website
-        </Button>
-      </div>
+      {project.websiteLink && (
+        <div className="flex justify-between items-center">
+          <TitleAnimation text={project.title} />
+          <Button href={project.websiteLink} className="h-min">
+            View Website
+          </Button>
+        </div>
+      )}
       <NextProject currentProject={project} />
     </div>
   );
