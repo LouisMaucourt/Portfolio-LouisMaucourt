@@ -8,19 +8,20 @@ import { NextProject } from "@/components/NextProject";
 import { TitleAnimation } from "@/components/TitleAnimation";
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function ProjectPage({ params }: Props) {
-  const project = await projectData.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const project = await projectData.find((p) => p.slug === slug);
 
   if (!project) return notFound();
 
   return (
     <div className="">
-      <div className="flex gap-11 h-screen  justify-center p-8">
+      <div className="flex gap-11 h-screen justify-center p-8">
         <div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             {project.title}
@@ -58,7 +59,7 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         ))}
       </div>
-      <TextAnimation text={project.howItWork}className="my-30" />
+      <TextAnimation text={project.howItWork} className="my-30" />
       {project.video && (
         <div className="h-screen w-full bg-black">
           <video src={project.video} className="w-full rounded-lg" controls>
@@ -74,7 +75,9 @@ export default async function ProjectPage({ params }: Props) {
       )}
       <div className="flex justify-between items-center">
         <TitleAnimation text={project.title} />
-        <Button href={project.websiteLink} className="h-min">View Website</Button>
+        <Button href={project.websiteLink} className="h-min">
+          View Website
+        </Button>
       </div>
       <NextProject currentProject={project} />
     </div>
