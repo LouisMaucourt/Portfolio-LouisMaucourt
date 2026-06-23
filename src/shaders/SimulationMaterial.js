@@ -3,8 +3,6 @@ import simulationFragmentShader from "./simulationFragmentShader";
 import * as THREE from "three";
 
 const getRandomData = (width, height) => {
-  // we need to create a vec4 since we're passing the positions to the fragment shader
-  // data textures need to have 4 components, R, G, B, and A
   const length = width * height * 4;
   const data = new Float32Array(length);
 
@@ -18,7 +16,7 @@ const getRandomData = (width, height) => {
     data[stride] = distance * Math.sin(theta) * Math.cos(phi);
     data[stride + 1] = distance * Math.sin(theta) * Math.sin(phi);
     data[stride + 2] = distance * Math.cos(theta);
-    data[stride + 3] = 1.0; // this value will not have any impact
+    data[stride + 3] = 1.0; 
   }
 
   return data;

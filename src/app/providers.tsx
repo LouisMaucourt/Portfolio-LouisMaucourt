@@ -3,16 +3,21 @@
 import { useRouter, usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
-// Ordre des routes pour déterminer la direction
-const ROUTE_ORDER = ['/', '/about', '/contact']
+const ROUTE_ORDER = ['/', '/about', '/contact'] as const
 
-function getDirection(from: string, to: string): 'left' | 'right' {
-    const fromIndex = ROUTE_ORDER.indexOf(from)
-    const toIndex = ROUTE_ORDER.indexOf(to)
-    return toIndex > fromIndex ? 'left' : 'right'
+type Route = (typeof ROUTE_ORDER)[number]
+
+function getTransitionType(from: string, to: string): 'nav-forward' | 'nav-back' {
+    const fromIndex = ROUTE_ORDER.indexOf(from as Route)
+    const toIndex = ROUTE_ORDER.indexOf(to as Route)
+    return toIndex > fromIndex ? 'nav-forward' : 'nav-back'
 }
 
-export function NavigationProvider({ children }) {
+function isInternalHref(href: string): boolean {
+    return !href.startsWith('http') && !href.startsWith('#') && href.startsWith('/')
+}
+
+export function NavigationProvider({ children }: { children: React.ReactNode }) {
     const router = useRouter()
     const pathname = usePathname()
     const prevPathname = useRef(pathname)
@@ -23,21 +28,14 @@ export function NavigationProvider({ children }) {
             if (!anchor) return
 
             const href = anchor.getAttribute('href')
-            if (!href || href.startsWith('http') || href.startsWith('#')) return
+            if (!href || !isInternalHref(href)) return
 
             e.preventDefault()
 
-            const direction = getDirection(prevPathname.current, href)
-            document.documentElement.dataset.transitionDirection = direction
+            const transitionType = getTransitionType(prevPathname.current, href)
             prevPathname.current = href
 
-            if ('startViewTransition' in document) {
-                (document as any).startViewTransition(() => {
-                    router.push(href)
-                })
-            } else {
-                router.push(href)
-            }
+            router.push(href, { transitionTypes: [transitionType] })
         }
 
         document.addEventListener('click', handleClick)
