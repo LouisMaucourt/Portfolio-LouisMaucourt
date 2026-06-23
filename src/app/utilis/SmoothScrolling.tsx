@@ -4,7 +4,6 @@ import Tempus from "@studio-freight/tempus";
 import Lenis from "@studio-freight/lenis";
 import { usePathname, useSearchParams } from "next/navigation";
 
-// Separate component that uses useSearchParams
 function SmoothScrollerContent() {
   const lenis = useRef<Lenis | null>(null);
   const pathname = usePathname();
@@ -18,7 +17,6 @@ function SmoothScrollerContent() {
   useLayoutEffect(() => {
     lenis.current = new Lenis({
       smoothWheel: true,
-      // Customize other instance settings here
     });
 
     const resize = setInterval(() => {
@@ -42,7 +40,6 @@ function SmoothScrollerContent() {
   return null;
 }
 
-// Main component with Suspense boundary
 export default function SmoothScroller() {
   return (
     <Suspense fallback={null}>

@@ -1,9 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "next-view-transitions";
 import { Project } from "@/data/projects";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { ViewTransition } from "react";
+import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectsProps {
   projects: Project[];
@@ -27,31 +33,49 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     return () => el.removeEventListener("wheel", handleWheel);
   }, []);
 
+  useGSAP(() => {
+    if (!containerRef.current) return;
+
+    const veils = containerRef.current.querySelectorAll(".project-veil");
+
+    gsap.to(veils, {
+      scaleX: 0,
+      duration: 0.8,
+      ease: "power3.inOut",
+      transformOrigin: "right center",
+      stagger: 0.15,
+      delay: 0.4,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+    });
+  }, []);
+
   return (
-    <div
-      ref={containerRef}
-      className="n overflow-hidden"
-      style={{ cursor: "grab" }}
-    >
-      <div className="flex h-full gap-8  py-12">
+    <div ref={containerRef} className="overflow-hidden" style={{ cursor: "grab" }}>
+      <div className="flex h-full gap-8 py-12">
         {projects.map((project) => (
-          <Link
-            key={project.idx}
-            href={`/projects/${project.slug}`}
-            className="block flex-shrink-0 group "
-          >
-            <Image
-              src={project.mainImage}
-              alt={project.title}
-              width={800}
-              height={1000}
-              className="rounded-lg h-[60vh] w-full transition duration-300 group-hover:invert object-contain"
-              style={{
-                viewTransitionName: `project-image-${project.idx}`,
-              }}
-            />
-            <h2 className="mt-3 text-xl font-semibold">{project.title}</h2>
-          </Link>
+          <ViewTransition key={project.idx} name={`photo-${project.idx}`} share="morph">
+            <Link href={`/projects/${project.slug}`} className="block flex-shrink-0 group relative">
+
+              {/* Voile */}
+              <div
+                className="project-veil absolute inset-0  bg-[var(--background)] z-10 rounded-lg"
+                style={{ transformOrigin: "right center" }}
+              />
+
+              <Image
+                src={project.mainImage}
+                alt={project.title}
+                width={800}
+                height={1000}
+                className="rounded-lg h-[60vh] w-full transition duration-300 group-hover:invert object-contain"
+              />
+              <h2 className="mt-3 text-xl font-semibold">{project.title}</h2>
+            </Link>
+          </ViewTransition>
         ))}
       </div>
     </div>

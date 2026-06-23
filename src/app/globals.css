@@ -15,30 +15,30 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ededed;
-    --foreground:#0a0a0a;
-    
+    --foreground: #0a0a0a;
   }
 }
-.transition-text-element {
-  view-transition-name: hello;
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-amiamie);
 }
 
-
-/* biome-ignore lint/correctness/noUnknownTypeSelector: <explanation> */
-::view-transition-old(root),
-/* biome-ignore lint/correctness/noUnknownTypeSelector: <explanation> */
-::view-transition-new(root) {
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in-out;
+#scene {
+  width: 100vw;
+  height: 100vh;
 }
 
-
-/* On cible les images en transition via un sélecteur normal */
-  *[view-transition-name^="project-image"] {
-  transition: transform 0.5s ease-in-out;
-  transform-origin: center center;
+@keyframes fade {
+  from { opacity: 0; filter: blur(3px); }
+  to   { opacity: 1; filter: blur(0); }
 }
 
+@keyframes scroll-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
 @keyframes scroll-up {
   0% {
@@ -52,16 +52,14 @@
 .animate-scroll-up {
   display: flex;
   flex-direction: column;
-  animation: scroll-up 10s linear infinite;
+  animation: scroll-up 100s linear infinite;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-amiamie);
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
 }
-#scene {
-  width: 100vw;
-  height: 100vh;
-}
-

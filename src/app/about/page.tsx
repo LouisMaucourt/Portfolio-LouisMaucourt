@@ -2,69 +2,89 @@ import { ItemTechno, Techno } from "@/components/Techno";
 import { TextAnimation } from "@/components/TextAnimation";
 import { TitleAnimation } from "@/components/TitleAnimation";
 import Link from "next/link"
+import { ViewTransition } from 'react'
 
 export default function AboutPage() {
   return (
+         <ViewTransition
+      enter={{ "nav-forward": "nav-forward", "nav-back": "nav-back", "nav-down": "nav-down", default: "none" }}
+      exit={{ "nav-forward": "nav-forward", "nav-back": "nav-back", "nav-down": "nav-up", default: "none" }}
+      default="none"
+    >
     <div className="flex flex-col gap-52">
       <div className="h-[60vh]">
-        <TitleAnimation text="About me" />
-        <TextAnimation text="I'm a 24-year-old French front-end developer who treats every project like a baker crafting the perfect bread. I carefully choose the best ingredients — design, clean code, and smooth interactions — to create interfaces that are both beautiful and meaningful. After starting my journey blending design and development, I completed a Master's in Web Development, always striving to do things right and deliver high-quality digital experiences." />
-      </div>
-
+        <TitleAnimation text="À propos de moi" />
+          <TextAnimation text="Développeur full-stack de 24 ans, diplômé d'un Bachelor Chef de Projet Digital puis d'un Master Développement Web. Cette double formation me permet de collaborer efficacement avec les équipes design, produit et technique — je comprends leurs contraintes et je parle leur langage. J'attache autant d'importance à la qualité du code qu'au produit finale" />
+        </div>
+        <div className="h-[60vh]">
+          <TitleAnimation text="Se que je fais" />
+          <TextAnimation text="Je développe des sites web et des applications en prenant en charge aussi bien le frontend que le backend. Je travaille sur l’intégration d’interfaces, la création d’APIs, la gestion de bases de données, l’authentification et la mise en place d’espaces d’administration ou clients. J’utilise principalement une base React et TypeScript pour construire des projets structurés, adaptés aux besoins et faciles à faire évoluer." />
+        </div>
       <div>
-        <TitleAnimation text="What I do" />
-        <TextAnimation
-          text="I primarily work with TypeScript and JavaScript, building custom, scalable, and maintainable front-end architectures. 
-I focus on crafting smooth, interactive experiences that can surprise users and convey a message through animations, micro-interactions, and even 3D experiences with Three.js. 
-I enjoy the challenge and complexity of building web applications that are both powerful and enjoyable to use, while integrating headless solutions like Sanity to give clients full control over their content. 
-And, just like a baker experimenting with new ingredients, I like to explore new tools like Astro and dive into the TanStack ecosystem — especially their advanced caching strategies — always looking for ways to push creativity further.
-I believe that a well-crafted website is like a perfectly baked loaf of bread: it requires the right ingredients, careful preparation, and a touch of artistry to create something truly special."
-        />
-      </div>
-      <div>
-        <TitleAnimation text="My Technologies" />
+        <TitleAnimation text="Mes technologies" />
         <Techno items={skillCategories} />
       </div>
       <Link
         href="mailto:louis.maucourt@outlook.fr"
         className="h-screen w-full flex justify-center items-center"
       >
-        <h2 className="underline text-8xl">Say Hello</h2>
+        <h2 className="underline text-8xl">@Bonjour</h2>
       </Link>
-    </div>
+      </div>
+    </ViewTransition>
   );
 }
-
 const skillCategories: ItemTechno[] = [
   {
-    title: "Frameworks & Librairies",
+    title: "Frontend",
     skills: [
       "TypeScript",
       "React",
+      "TanStack Library",
       "Next.js",
-      "Svelte",
       "Astro",
-      "TanStack Lib",
+      "Svelte",
     ],
   },
   {
-    title: "Backend",
-    skills: ["MySQL", "PostgreSQL", "Supabase", "Neon", "API REST"],
-  },
-  {
-    title: "CMS & Headless CMS",
-    skills: ["WordPress", "Sanity"],
-  },
-  {
-    title: "Outils & DevOps",
-    skills: ["Docker", "GitHub"],
-  },
-  {
     title: "Animations & UI",
-    skills: ["GSAP", "Three.js", "Tailwind CSS"],
+    skills: [
+      "Tailwind CSS",
+      "Gsap",
+      "Three.js / R3F",
+      "Shadcn"
+    ]
   },
   {
-    title: "Organisation",
-    skills: ["Architecture Web", "Gestion de projet", "Méthode Agile"],
+    title: "Backend",
+    skills: [
+      "Node.js",
+      "Bun",
+      "REST API",
+      "JWT",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+    ],
+  },
+  {
+    title: "DevOps & Outils",
+    skills: [
+      "Git / GitHub",
+      "Docker",
+      "PaaS",
+      "CI/CD",
+      "Linux / WSL",
+    ],
+  },
+  {
+    title: "Méthodologie",
+    skills: [
+      "Méthode Agile",
+      "Clean Code",
+      "Code Review",
+      "Architecture Web",
+      "Gestion de projet",
+    ],
   },
 ];

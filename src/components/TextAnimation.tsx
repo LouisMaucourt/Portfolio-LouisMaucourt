@@ -25,23 +25,22 @@ export const TextAnimation: React.FC<TextAnimationProps> = ({
 
     const words = containerRef.current.querySelectorAll("span");
 
-    // Réinitialisation des styles
-    gsap.set(words, { opacity: 0, x: 10, filter: "blur(5px)" });
+    gsap.set(words, { opacity: 0, y: 6, filter: "blur(3px)" });
 
-    // Animation mot par mot
     gsap.to(words, {
       opacity: 1,
-      x: 0,
+      y: 0,
       filter: "blur(0px)",
-      duration: scrub ? 1 : 0.3, // Si scrub, animation plus lente
-      ease: "power3.out",
-      stagger: scrub ? 0.1 : 0.08,
+      duration: scrub ? 1.2 : 0.6,
+      ease: "power1.out",
+      stagger: scrub ? 0.12 : 0.04,
+      delay:0.5,
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 80%",
-        end: scrub ? "top 20%" : "top 40%",
-        scrub, // ✅ Utilisation de la prop scrub
-        toggleActions: scrub ? "play none none none" : "play none none none",
+        start: "top 85%",
+        end: scrub ? "top 20%" : "top 50%",
+        scrub,
+        toggleActions: "play none none none",
       },
     });
   }, [text, scrub]);
