@@ -24,9 +24,12 @@ export default async function ProjectPage({ params }: Props) {
     <div className="">
       <div className="flex gap-11 h-screen justify-center p-8 w-full">
         <div className="w-1/3">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold ">
             {project.title}
           </h1>
+          <span className="mb-6 bg-gray-100 dark:bg-white/10 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+            {project.type}
+          </span>
 
           <p className="text-xl text-gray-700 leading-relaxed">
             {project.description}
@@ -84,7 +87,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className="flex justify-between items-center">
           <TitleAnimation text={`Comment marche ${project.title} ?`} />
           {project.websiteLink && (
-            <Button href={project.websiteLink} className="h-min">
+            <Button href={project.websiteLink} target="_blank" className="h-min">
               Voir plus
             </Button>
           )}

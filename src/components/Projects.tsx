@@ -59,13 +59,10 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         {projects.map((project) => (
           <ViewTransition key={project.idx} name={`photo-${project.idx}`} share="morph">
             <Link href={`/projects/${project.slug}`} className="block flex-shrink-0 group relative">
-
-              {/* Voile */}
               <div
                 className="project-veil absolute inset-0  bg-[var(--background)] z-10 rounded-lg"
                 style={{ transformOrigin: "right center" }}
               />
-
               <Image
                 src={project.mainImage}
                 alt={project.title}
@@ -73,7 +70,14 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                 height={1000}
                 className="rounded-lg h-[60vh] w-full transition duration-300 group-hover:invert object-contain"
               />
-              <h2 className="mt-3 text-xl font-semibold">{project.title}</h2>
+              <div className="flex justify-between items-start gap-4 mt-3">
+                <h2 className="text-xl font-semibold leading-tight text-gray-900">
+                  {project.title}
+                </h2>
+                <span className="mt-0.5 shrink-0 rounded-full bg-gray-100 dark:bg-white/10 px-2.5 py-0.5 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                  {project.type}
+                </span>
+              </div>
             </Link>
           </ViewTransition>
         ))}

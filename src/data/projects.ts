@@ -2,6 +2,7 @@ export interface Project {
     idx: number;
     mainImage: string;
     title: string;
+    type: string;
     description: string;
     slug: string;
     imgs?: string[];
@@ -15,8 +16,9 @@ export const projectData: Project[] = [
         idx: 1,
         mainImage: "/projects/studio-lab.png",
         title: "Studio Lab",
+        type: "Site Web / Application",
         description:
-            "Une agence web cherchait à refondre son site pour moderniser son identité et offrir à ses clients un accès autonome à leurs documents, factures et abonnements. Le projet couvre trois espaces distincts : un site public, un dashboard administrateur et un espace client sécurisé.",
+            "Studio Lab est un projet réalisé dans le cadre de mon ancienne agence web. L’objectif était de refondre leur site principal et de structurer un espace client permettant aux utilisateurs de retrouver leurs factures, gérer leurs abonnements et accéder à leurs documents. Le travail s’est fait en collaboration avec le pôle design pour la partie interface et avec l’équipe produit pour définir les fonctionnalités de l’espace client. Le projet se compose de trois parties : un site public, un dashboard administrateur et un espace client sécurisé.",
         slug: "studio-lab",
         websiteLink: "https://studio-lab.fr/",
         imgs: [
@@ -24,16 +26,17 @@ export const projectData: Project[] = [
             "/projects/studio-lab_2.webp",
             "/projects/studio-lab_3.webp",
         ],
-        technologie: ["TypeScript", "Next.js", "Supabase", "Sanity", "Tailwind", "Mailchimp"],
+        technologie: ["TypeScript", "Next.js","GSAP", "Supabase", "Sanity", "Tailwind", "Mailchimp"],
         howItWork:
-            "Next.js structure les trois espaces avec un système de rôles géré par Supabase, qui assure aussi l'authentification et la base de données. Sanity permet à l'agence de gérer ses contenus en autonomie. Mailchimp prend en charge les emails automatisés côté clients.",
+            "Avant le développement, j’ai mené une veille technique pour identifier les outils les plus adaptés aux besoins du projet et aux contraintes de l’équipe pour y faire les choix techniques. Le projet utilise Next.js pour gérer l’ensemble des interfaces avec un gros point sur Gsap car l'animation prend une place importante. Supabase est utilisé pour l’authentification, la gestion des rôles et le stockage des données liées aux utilisateurs. Sanity sert à gérer le contenu du site de manière indépendante du code ! ",
     },
     {
         idx: 2,
         mainImage: "/projects/hitoko-mockup.webp",
+        type: "Application web",
         title: "Hitoko",
         description:
-            "Projet de fin d'études né d'un constat simple : les établissements scolaires jonglent avec trop d'outils dispersés. Notes, absences, emplois du temps et notifications sont regroupés dans une seule plateforme, avec des dashboards dédiés aux étudiants, aux enseignants et aux administrateurs.",
+            "Hitoko est mon projet de fin d’études de mastère en développement web, réalisé en équipe. Le constat de départ était simple : dans beaucoup d’établissements scolaires, la gestion des notes, absences, emplois du temps et communications passe par plusieurs outils séparés, ce qui complique le suivi au quotidien. L’objectif était donc de centraliser ces usages dans une seule plateforme avec différents espaces selon les rôles : étudiants, enseignants et administrateurs. Ce projet nous a permis de travailler dans un cadre proche d’un environnement professionnel, avec une organisation agile, des revues de code régulières et des choix techniques réfléchis collectivement.",
         slug: "hitoko",
         imgs: [
             "/projects/hitoko.webp",
@@ -42,44 +45,48 @@ export const projectData: Project[] = [
         ],
         technologie: ["React", "TanStack Query", "Elysia", "Swagger", "Tailwind", "PostgreSQL", "Neon"],
         howItWork:
-            "TanStack Query gère la synchronisation et le cache des données entre le frontend React et l'API. Le backend Elysia expose une API REST typée et documentée via Swagger. Les données sont persistées dans une base PostgreSQL hébergée sur Neon.",
+            "L’application repose sur une architecture frontend/backend séparée. Le frontend est développé avec React pour construire les différents dashboards et interfaces selon les rôles. TanStack Query est utilisé pour gérer les appels API, le cache des données et la synchronisation des états entre l’interface et le serveur. Le backend est construit avec Elysia, qui expose une API REST typée pour centraliser la logique métier comme la gestion des notes, absences ou utilisateurs. La documentation de l’API est générée avec Swagger pour faciliter les tests et le travail en équipe. Toutes les données sont stockées dans PostgreSQL via Neon, avec une structure pensée pour gérer les relations entre utilisateurs, classes et ressources pédagogiques.",
     },
     {
         idx: 3,
         mainImage: "/projects/livret-mockup.webp",
-        title: "HostFlow",
+        type: "Application web",
+        title: "Livret d'accueil digital",
         description:
-            "Le projet est né d'un problème que j'observais autour de moi : les propriétaires de logements perdent un temps considérable à répondre aux mêmes questions de leurs voyageurs. HostFlow centralise toutes les informations d'un hébergement — accès, règles, recommandations — dans une interface partageable, avec une séparation claire entre l'espace propriétaire et la vue voyageur.",
-        slug: "hostflow",
+            "Ce projet est parti d’un constat simple : les propriétaires de logements passent beaucoup de temps à répondre aux mêmes questions de leurs voyageurs, ou finissent parfois par ne plus accueillir directement faute de disponibilité. Après une courte veille et des retours de mon entourage, j’ai voulu proposer une solution adaptée à ces usages concrets. Le livret d’accueil centralise les informations d’un hébergement dans une interface partagée entre deux vues distinctes : une pour le propriétaire et une pour le voyageur.",
+        slug: "livretaccueil",
         imgs: [
             "/projects/livret-1.webp",
             "/projects/livret-2.webp",
             "/projects/livret-3.webp",
         ],
+        // websiteLink:"livretaccueil.louismaucourt.fun",
         technologie: ["React", "TypeScript", "Bun", "REST API", "PostgreSQL", "Tailwind"],
         howItWork:
-            "Le frontend React + TypeScript consomme une API REST construite avec Bun. Chaque logement dispose de ses propres sections configurables et interchangeables, stockées en PostgreSQL, avec une séparation stricte entre la vue propriétaire et la vue voyageur.",
+            "Le frontend est développé avec React et TypeScript. Il consomme une API REST construite avec Bun qui gère les données des logements et leur configuration. Chaque logement est composé de sections modulaires (accès, règles, recommandations) enregistrées en base de données PostgreSQL. L’application sépare clairement deux usages : l’espace propriétaire, utilisé pour créer et organiser le contenu, et la vue voyageur, optimisée pour la consultation et le partage.",
     },
     {
         idx: 4,
         mainImage: "/projects/timer-mockup.webp",
+        type: "Mini application web",
         title: "Time Tracker",
         description:
-            "En cherchant un tracker de temps simple, je tombais soit sur des outils trop limités, soit sur des usines à gaz payantes. J’avais besoin de gérer plusieurs timers en parallèle — musique, travail, projets perso — alors j’ai fini par construire le mien, exactement comme je le voulais !",
+            "En cherchant un tracker de temps simple, je tombais soit sur des outils trop limités, soit sur des usines à gaz payantes. J’avais besoin de gérer plusieurs timers en parallèle, pour mes différentes activités musique, travail, projets perso, alors j’ai fini par construire le mien, exactement comme je le voulais !",
         slug: "timetracker",
-        websiteLink: "https://reee",
+        websiteLink: "timer.louismaucourt.fun",
         technologie: ["Bun", "TypeScript", "React", "Tailwind"],
         howItWork:
-            "L'application permet de créer et gérer plusieurs timers simultanément, chacun associé à une tâche. L'état est persisté dans le localStorage pour retrouver ses sessions d'une visite à l'autre.",
+            "La mini application permet de créer et gérer plusieurs timers simultanément, chacun associé à une tâche. L'état est persisté dans le localStorage pour retrouver ses sessions d'une visite à l'autre.",
     },
     {
         idx: 5,
         mainImage: "/projects/quizz-mockup.webp",
+        type: "Mini application web",
         title: "Quizz",
         description:
-            "L'idée est venue d'une envie de tester mes connaissances de façon ludique, sans passer par des plateformes trop rigides. Un format simple : des questions, des réponses, un score — rien de plus, rien de moins.",
+            "Je voulais simplement créer mon propre système de quiz simple. Je voulais utiliser d'une part les données d'une API et d'autre part l'envie de faire des quizz avec mon humour et mes questions existentielles, type “quel genre de paillasson je serais”. Tous ces quizz affichent une série de questions, des réponses, et un score final.",
         slug: "quizz",
-        websiteLink: "https://reee",
+        websiteLink: "quizz.louismaucourt.fun",
         imgs: [
             "/projects/quizz-1.webp",
             "/projects/quizz-2.webp",
@@ -87,16 +94,17 @@ export const projectData: Project[] = [
         ],
         technologie: ["Bun", "TypeScript", "React", "Tailwind"],
         howItWork:
-            "L'application charge des questions depuis un fichier de données, gère la progression et le score côté client, et affiche un récapitulatif en fin de session.",
+            "L’application consomme une API externe pour récupérer les questions ou, pour certains quiz, des données que j’ai créées. La logique de progression du quiz et le calcul du score sont gérés côté client avec React. À la fin de la session, un écran récapitule les réponses et le score obtenu.",
     },
     {
         idx: 6,
         mainImage: "/projects/voiture-mockup.webp",
         title: "Course Voiture",
+        type: "Expériementation",
         description:
-            "Une expérimentation 3D d’une envie de jouer avec le scroll : plus on avance, plus l'univers se dégrade. La saturation de la lumière augmente, la musique se distord, les vagues s'amplifient. Une façon de questionner ce qu'on fait avancer sans vraiment savoir pourquoi.",
+            "Expérimentation 3D basée sur le scroll. Le projet explore une progression visuelle et sonore : plus l’utilisateur avance, plus l’environnement se dégrade, avec une évolution de la lumière, du son et des effets visuels.",
         slug: "vroumvroum",
-        websiteLink: "https://reee",
+        websiteLink: "https://vroummm.louismaucourt.fun/",
         imgs: [
             "/projects/voiture-1.webp",
             "/projects/voiture-2.webp",
@@ -104,6 +112,6 @@ export const projectData: Project[] = [
         ],
         technologie: ["Three.js", "TypeScript", "GSAP", "Vite"],
         howItWork:
-"Construit avec Three.js, le projet repose sur une architecture orientée objet, particulièrement adaptée à ce type d’expérimentation 3D. J'ai importé un modèle 3D de voiture et fait progresser la scène au fil du scroll via GSAP. Des shaders personnalisés (vertex et fragment) font évoluer les paramètres visuels et sonores à chaque niveau : lumière, vagues, dégradation audio.",
+            "Le projet est construit avec Three.js autour d’une architecture orientée objet pour gérer la scène 3D. Un modèle de voiture est intégré et animé en fonction du scroll via GSAP. Les paramètres de rendu évoluent progressivement (lumière, couleurs, ambiance) à travers des shaders personnalisés (vertex et fragment), synchronisés avec la progression de l’utilisateur.",
     },
 ];
