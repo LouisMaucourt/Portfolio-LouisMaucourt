@@ -86,7 +86,7 @@ export const projectData: Project[] = [
         description:
             "Je voulais simplement créer mon propre système de quiz simple. Je voulais utiliser d'une part les données d'une API et d'autre part l'envie de faire des quizz avec mon humour et mes questions existentielles, type “quel genre de paillasson je serais”. Tous ces quizz affichent une série de questions, des réponses, et un score final.",
         slug: "quizz",
-        websiteLink: "https://contryquizz.louismaucourt.fun/",
+        websiteLink: "quizz.louismaucourt.fun",
         imgs: [
             "/projects/quizz-1.webp",
             "/projects/quizz-2.webp",
