@@ -31,7 +31,7 @@ export const Button = ({
       target={props.target}
       rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
       transitionTypes={transition ? transitionMap[transition] : undefined}
-      className={`px-6 py-3 inline-block ${className ?? ""}`}
+      className={`px-6 py-3 inline-block transition-all duration-300 ease-out hover:-translate-y-0.5 hover:opacity-80 active:translate-y-0 active:duration-150 ${className ?? ""}`}
       {...props}
     >
       {children}

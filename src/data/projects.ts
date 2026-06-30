@@ -1,3 +1,5 @@
+import { string } from "three/tsl";
+
 export interface Project {
     idx: number;
     mainImage: string;
@@ -9,6 +11,7 @@ export interface Project {
     howItWork: string;
     technologie: string[];
     websiteLink?: string;
+    githubLink?:string,
 }
 
 export const projectData: Project[] = [
@@ -46,7 +49,7 @@ export const projectData: Project[] = [
         technologie: ["React", "TanStack Query", "Elysia", "Swagger", "Tailwind", "PostgreSQL", "Neon"],
         howItWork:
             "L’application repose sur une architecture frontend/backend séparée. Le frontend est développé avec React pour construire les différents dashboards et interfaces selon les rôles. TanStack Query est utilisé pour gérer les appels API, le cache des données et la synchronisation des états entre l’interface et le serveur. Le backend est construit avec Elysia, qui expose une API REST typée pour centraliser la logique métier comme la gestion des notes, absences ou utilisateurs. La documentation de l’API est générée avec Swagger pour faciliter les tests et le travail en équipe. Toutes les données sont stockées dans PostgreSQL via Neon, avec une structure pensée pour gérer les relations entre utilisateurs, classes et ressources pédagogiques.",
-    },
+},
     {
         idx: 3,
         mainImage: "/projects/livret-mockup.webp",
@@ -60,7 +63,8 @@ export const projectData: Project[] = [
             "/projects/livret-2.webp",
             "/projects/livret-3.webp",
         ],
-        // websiteLink:"livretaccueil.louismaucourt.fun",
+        websiteLink: "https://livret.louismaucourt.fun/",
+        githubLink:"https://github.com/LouisMaucourt/Livret-saas",
         technologie: ["React", "TypeScript", "Bun", "REST API", "PostgreSQL", "Tailwind"],
         howItWork:
             "Le frontend est développé avec React et TypeScript. Il consomme une API REST construite avec Bun qui gère les données des logements et leur configuration. Chaque logement est composé de sections modulaires (accès, règles, recommandations) enregistrées en base de données PostgreSQL. L’application sépare clairement deux usages : l’espace propriétaire, utilisé pour créer et organiser le contenu, et la vue voyageur, optimisée pour la consultation et le partage.",
@@ -73,7 +77,8 @@ export const projectData: Project[] = [
         description:
             "En cherchant un tracker de temps simple, je tombais soit sur des outils trop limités, soit sur des usines à gaz payantes. J’avais besoin de gérer plusieurs timers en parallèle, pour mes différentes activités musique, travail, projets perso, alors j’ai fini par construire le mien, exactement comme je le voulais !",
         slug: "timetracker",
-        websiteLink: "timer.louismaucourt.fun",
+        websiteLink: "https://timetracker.louismaucourt.fun/",
+        githubLink: "https://github.com/LouisMaucourt/TimeTracker",
         technologie: ["Bun", "TypeScript", "React", "Tailwind"],
         howItWork:
             "La mini application permet de créer et gérer plusieurs timers simultanément, chacun associé à une tâche. L'état est persisté dans le localStorage pour retrouver ses sessions d'une visite à l'autre.",
@@ -86,13 +91,14 @@ export const projectData: Project[] = [
         description:
             "Je voulais simplement créer mon propre système de quiz simple. Je voulais utiliser d'une part les données d'une API et d'autre part l'envie de faire des quizz avec mon humour et mes questions existentielles, type “quel genre de paillasson je serais”. Tous ces quizz affichent une série de questions, des réponses, et un score final.",
         slug: "quizz",
-        websiteLink: "quizz.louismaucourt.fun",
         imgs: [
             "/projects/quizz-1.webp",
             "/projects/quizz-2.webp",
             "/projects/quizz-3.webp",
         ],
         technologie: ["Bun", "TypeScript", "React", "Tailwind"],
+        websiteLink: "https://quizzscientifique.louismaucourt.fun/",
+        githubLink: "https://github.com/LouisMaucourt/Country-Quizz", 
         howItWork:
             "L’application consomme une API externe pour récupérer les questions ou, pour certains quiz, des données que j’ai créées. La logique de progression du quiz et le calcul du score sont gérés côté client avec React. À la fin de la session, un écran récapitule les réponses et le score obtenu.",
     },

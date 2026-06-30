@@ -86,11 +86,18 @@ export default async function ProjectPage({ params }: Props) {
       <div className="mb-30">
         <div className="flex justify-between items-center">
           <TitleAnimation text={`Comment marche ${project.title} ?`} />
-          {project.websiteLink && (
-            <Button href={project.websiteLink} target="_blank" className="h-min">
-              Voir plus
-            </Button>
-          )}
+          <div>
+            {project.websiteLink && (
+              <Button href={project.websiteLink} target="_blank" className="h-min">
+                Voir {project.title}
+              </Button>
+            )}
+            {project.githubLink && (
+              <Button href={project.githubLink} target="_blank" className="h-min">
+                Voir le Git
+              </Button>
+            )}
+          </div>
         </div>
         <TextAnimation text={project.howItWork} className="" />
       </div>

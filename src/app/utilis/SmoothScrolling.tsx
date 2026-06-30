@@ -9,7 +9,6 @@ function SmoothScrollerContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (lenis.current) lenis.current.scrollTo(0, { immediate: true });
   }, [pathname, searchParams, lenis]);
