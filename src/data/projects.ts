@@ -63,7 +63,7 @@ export const projectData: Project[] = [
             "/projects/livret-2.webp",
             "/projects/livret-3.webp",
         ],
-        websiteLink: "https://livret.louismaucourt.fun/",
+        websiteLink: "https://carnetvoyageur.fr/",
         githubLink:"https://github.com/LouisMaucourt/Livret-saas",
         technologie: ["React", "TypeScript", "Bun", "REST API", "PostgreSQL", "Tailwind"],
         howItWork:
