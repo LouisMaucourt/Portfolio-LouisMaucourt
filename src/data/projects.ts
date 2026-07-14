@@ -89,15 +89,15 @@ export const projectData: Project[] = [
         type: "Mini application web",
         title: "Quizz",
         description:
-            "Je voulais simplement créer mon propre système de quiz simple. Je voulais utiliser d'une part les données d'une API et d'autre part l'envie de faire des quizz avec mon humour et mes questions existentielles, type “quel genre de paillasson je serais”. Tous ces quizz affichent une série de questions, des réponses, et un score final.",
+            "Je voulais simplement créer mon propre système de quiz simple. Je voulais utiliser d'une part les données d'une API externe. Tous ces quizz affichent une série de questions, des réponses, et un score final.",
         slug: "quizz",
         imgs: [
             "/projects/quizz-1.webp",
             "/projects/quizz-2.webp",
             "/projects/quizz-3.webp",
         ],
-        technologie: ["Bun", "TypeScript", "React", "Tailwind"],
-        websiteLink: "https://quizzscientifique.louismaucourt.fun/",
+        technologie: ["Bun", "TypeScript", "React","API Rest", "Tailwind"],
+        websiteLink: "https://contryquizz.louismaucourt.fun/",
         githubLink: "https://github.com/LouisMaucourt/Country-Quizz", 
         howItWork:
             "L’application consomme une API externe pour récupérer les questions ou, pour certains quiz, des données que j’ai créées. La logique de progression du quiz et le calcul du score sont gérés côté client avec React. À la fin de la session, un écran récapitule les réponses et le score obtenu.",
