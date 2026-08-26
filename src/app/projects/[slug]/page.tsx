@@ -37,10 +37,11 @@ export default async function ProjectPage({ params }: Props) {
           <Image
             src={project.mainImage}
             alt={project.title}
-            width={1200}
-            height={800}
+            width={1900}
+            height={1080}
             className="w-full lg:w-2/3 h-auto max-h-[80vh] object-cover rounded-2xl shadow-lg"
             priority
+            sizes="(min-width: 1024px) 66vw, 100vw"
           />
         </ViewTransition>
       </div>

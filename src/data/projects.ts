@@ -69,20 +69,20 @@ export const projectData: Project[] = [
         howItWork:
             "Le frontend est développé avec React et TypeScript. Il consomme une API REST construite avec Bun qui gère les données des logements et leur configuration. Chaque logement est composé de sections modulaires (accès, règles, recommandations) enregistrées en base de données PostgreSQL. L’application sépare clairement deux usages : l’espace propriétaire, utilisé pour créer et organiser le contenu, et la vue voyageur, optimisée pour la consultation et le partage.",
     },
-    {
-        idx: 4,
-        mainImage: "/projects/timer-mockup.webp",
-        type: "Mini application web",
-        title: "Time Tracker",
-        description:
-            "En cherchant un tracker de temps simple, je tombais soit sur des outils trop limités, soit sur des usines à gaz payantes. J’avais besoin de gérer plusieurs timers en parallèle, pour mes différentes activités musique, travail, projets perso, alors j’ai fini par construire le mien, exactement comme je le voulais !",
-        slug: "timetracker",
-        websiteLink: "https://timetracker.louismaucourt.fun/",
-        githubLink: "https://github.com/LouisMaucourt/TimeTracker",
-        technologie: ["Bun", "TypeScript", "React", "Tailwind"],
-        howItWork:
-            "La mini application permet de créer et gérer plusieurs timers simultanément, chacun associé à une tâche. L'état est persisté dans le localStorage pour retrouver ses sessions d'une visite à l'autre.",
-    },
+    // {
+    //     idx: 4,
+    //     mainImage: "/projects/timer-mockup.webp",
+    //     type: "Mini application web",
+    //     title: "Time Tracker",
+    //     description:
+    //         "En cherchant un tracker de temps simple, je tombais soit sur des outils trop limités, soit sur des usines à gaz payantes. J’avais besoin de gérer plusieurs timers en parallèle, pour mes différentes activités musique, travail, projets perso, alors j’ai fini par construire le mien, exactement comme je le voulais !",
+    //     slug: "timetracker",
+    //     websiteLink: "https://timetracker.louismaucourt.fun/",
+    //     githubLink: "https://github.com/LouisMaucourt/TimeTracker",
+    //     technologie: ["Bun", "TypeScript", "React", "Tailwind"],
+    //     howItWork:
+    //         "La mini application permet de créer et gérer plusieurs timers simultanément, chacun associé à une tâche. L'état est persisté dans le localStorage pour retrouver ses sessions d'une visite à l'autre.",
+    // },
     {
         idx: 5,
         mainImage: "/projects/quizz-mockup.webp",

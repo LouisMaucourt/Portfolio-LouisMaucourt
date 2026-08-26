@@ -51,20 +51,36 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     if (!containerRef.current) return;
 
     const veils = containerRef.current.querySelectorAll(".project-veil");
+    const items = containerRef.current.querySelectorAll(".project-item");
+    gsap.set(items, { opacity: 0, y: 16 });
+    gsap.set(veils, { scaleX: 1 });
 
-    gsap.to(veils, {
-      scaleX: 0,
-      duration: 0.8,
-      ease: "power3.inOut",
-      transformOrigin: "right center",
-      stagger: 0.15,
-      delay: 0.4,
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top 70%",
         toggleActions: "play none none none",
       },
+      delay: 0.4,
     });
+
+    tl.to(items, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: 0.15,
+    }).to(
+      veils,
+      {
+        scaleX: 0,
+        duration: 0.8,
+        ease: "power3.inOut",
+        transformOrigin: "right center",
+        stagger: 0.15,
+      },
+      "<" 
+    );
   }, []);
 
   return (
@@ -76,7 +92,10 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
       <div className="flex flex-col lg:flex-row h-full gap-8 lg:py-12 py-7 pb-25">
         {projects.map((project) => (
           <ViewTransition key={project.idx} name={`photo-${project.idx}`} share="morph">
-            <Link href={`/projects/${project.slug}`} className="block lg:flex-shrink-0 group relative">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="project-item block lg:flex-shrink-0 group relative opacity-0"
+            >
               <div
                 className="project-veil absolute inset-0 bg-[var(--background)] z-10 rounded-lg"
                 style={{ transformOrigin: "right center" }}
@@ -101,15 +120,6 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         ))}
       </div>
 
-      <style jsx>{`
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   );
 };
