@@ -103,8 +103,9 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
               <Image
                 src={project.mainImage}
                 alt={project.title}
-                width={800}
-                height={1000}
+                width={1900}
+                height={1080}
+                sizes="(min-width: 1024px) 66vw, 100vw"
                 className="rounded-lg lg:h-[70vh] h-full w-full transition duration-300 group-hover:invert object-contain"
               />
               <div className="flex justify-between items-center gap-4 mt-3">
