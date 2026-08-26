@@ -45,7 +45,7 @@ export const TitleAnimation: React.FC<TextAnimationProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`max-w-5xl lg:py-15 py-3 flex flex-row flex-wrap font-bold ${className}`}
+      className={`max-w-5xl lg:py-8 py-3 flex flex-row flex-wrap font-bold ${className}`}
     >
       {words.map((word, wordIndex) => (
         <span key={wordIndex} className="inline-block whitespace-nowrap">

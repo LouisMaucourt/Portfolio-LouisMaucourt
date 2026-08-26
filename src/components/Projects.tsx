@@ -52,6 +52,8 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
     const veils = containerRef.current.querySelectorAll(".project-veil");
     const items = containerRef.current.querySelectorAll(".project-item");
+
+    // État initial imposé explicitement (évite le flash au premier chargement)
     gsap.set(items, { opacity: 0, y: 16 });
     gsap.set(veils, { scaleX: 1 });
 
@@ -121,6 +123,15 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         ))}
       </div>
 
+      <style jsx>{`
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 };
