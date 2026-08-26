@@ -12,11 +12,11 @@ export default function AboutPage() {
       default="none"
     >
     <div className="flex flex-col gap-52">
-      <div className="h-[60vh]">
+      <div className="h-[60vh] ">
         <TitleAnimation text="À propos de moi" />
           <TextAnimation text="Développeur full-stack de 24 ans, diplômé d'un Bachelor Chef de Projet Digital puis d'un Master Développement Web. Cette double formation me permet de collaborer efficacement avec les équipes design, produit et technique — je comprends leurs contraintes et je parle leur langage. J'attache autant d'importance à la qualité du code qu'au produit finale" />
         </div>
-        <div className="h-[60vh]">
+        <div className="lg:h-[60vh] h-full">
           <TitleAnimation text="Se que je fais" />
           <TextAnimation text="Je développe des sites web et des applications en prenant en charge aussi bien le frontend que le backend. Je travaille sur l’intégration d’interfaces, la création d’APIs, la gestion de bases de données, l’authentification et la mise en place d’espaces d’administration ou clients. J’utilise principalement une base React et TypeScript pour construire des projets structurés, adaptés aux besoins et faciles à faire évoluer." />
         </div>
@@ -28,7 +28,7 @@ export default function AboutPage() {
         href="mailto:louis.maucourt@outlook.fr"
         className="h-screen w-full flex justify-center items-center"
       >
-        <h2 className="underline text-8xl">@Bonjour</h2>
+        <h2 className="underline lg:text-8xl text-5xl">@Bonjour</h2>
       </Link>
       </div>
     </ViewTransition>
@@ -39,9 +39,10 @@ const skillCategories: ItemTechno[] = [
     title: "Frontend",
     skills: [
       "TypeScript",
+      "JavaScript",
       "React",
-      "TanStack Library",
       "Next.js",
+      "TanStack Library",
       "Astro",
       "Svelte",
     ],
@@ -59,9 +60,11 @@ const skillCategories: ItemTechno[] = [
     title: "Backend",
     skills: [
       "Node.js",
+      "Hono",
       "Bun",
       "REST API",
       "JWT",
+      "Java",
       "PostgreSQL",
       "MySQL",
       "MongoDB",
@@ -72,6 +75,7 @@ const skillCategories: ItemTechno[] = [
     skills: [
       "Git / GitHub",
       "Docker",
+      "Dockploy",
       "PaaS",
       "CI/CD",
       "Linux / WSL",

@@ -21,7 +21,7 @@ export const NextProject: React.FC<NextProjectProps> = ({ currentProject }) => {
   const scrollContent = Array.from({ length: 40 }).map((_, i) => (
     <p
       key={i}
-      className="text-[8rem] font-extrabold uppercase tracking-widest text-gray-600 opacity-50 whitespace-nowrap"
+      className="lg:text-9xl text-4xl font-extrabold uppercase tracking-widest text-gray-600 opacity-50 whitespace-nowrap"
     >
       NextProjects
     </p>
@@ -30,7 +30,7 @@ export const NextProject: React.FC<NextProjectProps> = ({ currentProject }) => {
   return (
     <div className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div className="animate-scroll-up flex flex-col">
+        <div className="animate-scroll-up flex flex-col gap-5">
           {scrollContent}
           {scrollContent}
           {scrollContent}
@@ -38,9 +38,8 @@ export const NextProject: React.FC<NextProjectProps> = ({ currentProject }) => {
       </div>
 
       <Link
-        href={`/projects/${nextProject.slug}`}
-        prefetch={true}                              // ← force le prefetch (déjà default mais explicite)
-        onMouseEnter={() => router.prefetch(`/projects/${nextProject.slug}`)}  // ← prefetch dès le hover
+        href={`/projects/${nextProject.slug}`}                     
+        onMouseEnter={() => router.prefetch(`/projects/${nextProject.slug}`)}  
         className="relative z-10 flex flex-col items-center gap-4 group"
       >
       <ViewTransition name={`photo-${nextProject.idx}`}>

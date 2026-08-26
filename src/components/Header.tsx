@@ -14,7 +14,7 @@ export const Header = () => {
 
   return (
     <header
-      className="fixed bottom-10 left-0 w-full z-40"
+      className="fixed lg:bottom-10 bottom-5 left-0 w-full z-40"
       style={{ viewTransitionName: "site-header" }}
     >
       <nav className="flex justify-center items-center p-5">
@@ -23,7 +23,7 @@ export const Header = () => {
             <Button
               href="/projects"
               transition={getTransition("/projects")}
-              className={`rounded-none border-0 ${pathname.startsWith("/projects") ? "bg-black text-white" : ""
+              className={`min-w-24 text-center rounded-none border-0 !no-underline ${pathname.startsWith("/projects") ? "bg-black text-white" : ""
                 }`}
             >
               Projets
@@ -33,17 +33,17 @@ export const Header = () => {
             <Button
               href="/"
               transition={getTransition("/")}
-              className={`rounded-none border-0 ${pathname === "/" ? "bg-black text-white" : ""
+              className={`min-w-24 text-center  rounded-none border-0 !no-underline ${pathname === "/" ? "bg-black text-white" : ""
                 }`}
             >
-              Maison
+              Index
             </Button>
           </li>
           <li>
             <Button
               href="/about"
               transition={getTransition("/about")}
-              className={`rounded-none border-0 ${pathname === "/about" ? "bg-black text-white" : ""
+              className={`min-w-24 text-center  rounded-none border-0 !no-underline ${pathname === "/about" ? "bg-black text-white" : ""
                 }`}
             >
               À Propos

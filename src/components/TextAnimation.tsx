@@ -31,10 +31,15 @@ export const TextAnimation: React.FC<TextAnimationProps> = ({
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      duration: scrub ? 1.2 : 0.6,
-      ease: "power1.out",
-      stagger: scrub ? 0.12 : 0.04,
-      delay:0.5,
+      duration: scrub ? 1.2 : 0.4,
+      ease: "power2.out",
+      stagger: scrub
+        ? 0.12
+        : {
+          each: 0.02,
+          from: "start",
+        },
+      delay: 0.5,
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top 85%",
@@ -48,8 +53,7 @@ export const TextAnimation: React.FC<TextAnimationProps> = ({
   return (
     <div ref={containerRef} className={`max-w-5xl py-5 flex flex-wrap ${className}`}>
       {text.split(" ").map((word, index) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-        <span key={index} className="inline-block mr-2 text-3xl">
+        <span key={index} className="inline-block mr-2 lg:text-3xl text-xl">
           {word}
         </span>
       ))}

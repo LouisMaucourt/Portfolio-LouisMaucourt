@@ -22,6 +22,8 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     const el = containerRef.current;
     if (!el) return;
 
+    const mq = window.matchMedia("(min-width: 1024px)");
+
     const handleWheel = (e: WheelEvent) => {
       if (e.deltaY !== 0) {
         e.preventDefault();
@@ -29,8 +31,20 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
       }
     };
 
-    el.addEventListener("wheel", handleWheel, { passive: false });
-    return () => el.removeEventListener("wheel", handleWheel);
+    const setup = () => {
+      el.removeEventListener("wheel", handleWheel);
+      if (mq.matches) {
+        el.addEventListener("wheel", handleWheel, { passive: false });
+      }
+    };
+
+    setup();
+    mq.addEventListener("change", setup);
+
+    return () => {
+      el.removeEventListener("wheel", handleWheel);
+      mq.removeEventListener("change", setup);
+    };
   }, []);
 
   useGSAP(() => {
@@ -54,13 +68,17 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   }, []);
 
   return (
-    <div ref={containerRef} className="overflow-hidden" style={{ cursor: "grab" }}>
-      <div className="flex h-full gap-8 py-12">
+    <div
+      ref={containerRef}
+      className="no-scrollbar lg:overflow-x-auto lg:overflow-y-hidden overflow-visible"
+      style={{ cursor: "grab" }}
+    >
+      <div className="flex flex-col lg:flex-row h-full gap-8 lg:py-12 py-7 pb-25">
         {projects.map((project) => (
           <ViewTransition key={project.idx} name={`photo-${project.idx}`} share="morph">
-            <Link href={`/projects/${project.slug}`} className="block flex-shrink-0 group relative">
+            <Link href={`/projects/${project.slug}`} className="block lg:flex-shrink-0 group relative">
               <div
-                className="project-veil absolute inset-0  bg-[var(--background)] z-10 rounded-lg"
+                className="project-veil absolute inset-0 bg-[var(--background)] z-10 rounded-lg"
                 style={{ transformOrigin: "right center" }}
               />
               <Image
@@ -68,13 +86,13 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                 alt={project.title}
                 width={800}
                 height={1000}
-                className="rounded-lg h-[60vh] w-full transition duration-300 group-hover:invert object-contain"
+                className="rounded-lg lg:h-[70vh] h-full w-full transition duration-300 group-hover:invert object-contain"
               />
-              <div className="flex justify-between items-start gap-4 mt-3">
-                <h2 className="text-xl font-semibold leading-tight text-gray-900">
+              <div className="flex justify-between items-center gap-4 mt-3">
+                <h2 className="lg:text-xl text-base font-semibold leading-tight text-gray-900 capitalize">
                   {project.title}
                 </h2>
-                <span className="mt-0.5 shrink-0 rounded-full bg-gray-100 dark:bg-white/10 px-2.5 py-0.5 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                <span className="mt-0.5 shrink-0 rounded-full bg-gray-100 dark:bg-white/10 px-2.5 py-0.5 lg:text-xs text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                   {project.type}
                 </span>
               </div>
@@ -82,6 +100,16 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
           </ViewTransition>
         ))}
       </div>
+
+      <style jsx>{`
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 };

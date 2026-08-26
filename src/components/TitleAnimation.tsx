@@ -1,59 +1,70 @@
-  "use client";
+"use client";
 
-  import React, { useRef, useEffect } from "react";
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-  import { useGSAP } from "@gsap/react";
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  interface TextAnimationProps {
-    text: string;
-    className?: string;
-  }
-  export const TitleAnimation: React.FC<TextAnimationProps> = ({
-    text,
-    className,
-  }) => {
-    const containerRef = useRef<HTMLDivElement>(null);
+interface TextAnimationProps {
+  text: string;
+  className?: string;
+}
 
-    useGSAP(() => {
-      if (!containerRef.current) return;
+export const TitleAnimation: React.FC<TextAnimationProps> = ({
+  text,
+  className,
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-      const letters = containerRef.current.querySelectorAll("span");
+  useGSAP(() => {
+    if (!containerRef.current) return;
 
-      gsap.to(letters, {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.01,
-        delay: .5,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          
-          start: "top 70%",
-          end: "top 40%",
-          toggleActions: "play none none none",
-        },
-      });
-    }, [text]);
+    const letters = containerRef.current.querySelectorAll(".char");
 
-    return (
-      <div
-        ref={containerRef}
-        className={`max-w-5xl py-15 flex flex-wrap ${className}`}
-      >
-        {text.split("").map((char, index) => (
-          <span
-            key={index}
-            className="inline-block text-5xl"
-            style={{ opacity: 0, transform: "translateY(5px)", filter: "blur(5px)" }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </span>
-        ))}
-      </div>
-    );
-  };
+    gsap.to(letters, {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 0.9,
+      ease: "power3.out",
+      stagger: 0.01,
+      delay: 0.5,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 70%",
+        end: "top 40%",
+        toggleActions: "play none none none",
+      },
+    });
+  }, [text]);
+
+  const words = text.split(" ");
+
+  return (
+    <div
+      ref={containerRef}
+      className={`max-w-5xl lg:py-15 py-3 flex flex-row flex-wrap font-bold ${className}`}
+    >
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {word.split("").map((char, charIndex) => (
+            <span
+              key={charIndex}
+              className="char inline-block lg:text-5xl text-3xl"
+              style={{
+                opacity: 0,
+                transform: "translateY(5px)",
+                filter: "blur(5px)",
+              }}
+            >
+              {char}
+            </span>
+          ))}
+          <span className="inline-block lg:text-5xl text-3xl">&nbsp;</span>
+        </span>
+      ))}
+    </div>
+  );
+};

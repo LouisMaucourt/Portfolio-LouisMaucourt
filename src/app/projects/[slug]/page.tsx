@@ -22,18 +22,15 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <div className="">
-      <div className="flex gap-11 h-screen justify-center p-8 w-full">
-        <div className="w-1/3">
-          <h1 className="text-4xl md:text-5xl font-bold ">
+      <div className="flex flex-col-reverse lg:flex-row gap-11 lg:h-screen lg:justify-center justify-end lg:p-8 p-2 w-full">
+        <div className="w-full lg:w-1/3">
+          <h1 className="text-4xl md:text-5xl font-bold capitalize">
             {project.title}
           </h1>
           <span className="mb-6 bg-gray-100 dark:bg-white/10 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
             {project.type}
           </span>
-
-          <p className="text-xl text-gray-700 leading-relaxed">
-            {project.description}
-          </p>
+            <TextAnimation text={project.description}/>
         </div>
 
         <ViewTransition name={`photo-${project.idx}`}>
@@ -42,28 +39,29 @@ export default async function ProjectPage({ params }: Props) {
             alt={project.title}
             width={1200}
             height={800}
-            className="max-h-[80vh] object-cover rounded-2xl shadow-lg w-2/3"
-            priority={true}
+            className="w-full lg:w-2/3 h-auto max-h-[80vh] object-cover rounded-2xl shadow-lg"
+            priority
           />
         </ViewTransition>
       </div>
-      <div className="flex gap-4">
+      <div className="flex lg:flex-row flex-col  gap-4">
         {project.imgs &&
           <>
-            {project.imgs.map((img, index) => (
-              <div key={`${project.slug}-${index}`} className="">
-                <Image
-                  src={img}
-                  alt={`${project.title} image ${index + 1}`}
-                  width={1500}
-                  height={600}
-                  className="w-full h-full object-cover rounded-lg shadow-mdx"
-                  style={{
-                    viewTransitionName: `project-image-${project.slug}-${index}`,
-                  }}
-                />
-              </div>
-            ))}
+          {project.imgs.map((img, index) => (
+            <div key={`${project.slug}-${index}`}>
+              <Image
+                src={img}
+                alt={`${project.title} image ${index + 1}`}
+                width={1500}
+                height={600}
+                loading={index === 0 ? "eager" : "lazy"}
+                className="w-full h-full object-cover rounded-lg shadow-mdx"
+                style={{
+                  viewTransitionName: `project-image-${project.slug}-${index}`,
+                }}
+              />
+            </div>
+          ))}
           </>
         }
 
@@ -72,7 +70,7 @@ export default async function ProjectPage({ params }: Props) {
         {project.technologie.map((techno, index) => (
           <div
             key={techno}
-            className="flex flex-col justify-center gap-2 px-8 py-6 border-r border-gray-200 last:border-r-0 bg-black/3 hover:bg-gray-100 transition-colors"
+            className="flex flex-col justify-center gap-2 lg:px-8 lg:py-6 p-3 border-r border-gray-200 last:border-r-0 bg-black/3 hover:bg-gray-100 transition-colors"
           >
             <span className="text-[10px] text-gray-400">
               {String(index + 1).padStart(2, "0")}
@@ -84,9 +82,9 @@ export default async function ProjectPage({ params }: Props) {
         ))}
       </div>
       <div className="mb-30">
-        <div className="flex justify-between items-center">
+        <div className="flex lg:flex-row flex-col justify-between lg:items-center mt-20">
           <TitleAnimation text={`Comment marche ${project.title} ?`} />
-          <div>
+          <div className="flex flex-row lg:justify-baseline justify-between">
             {project.websiteLink && (
               <Button href={project.websiteLink} target="_blank" className="h-min">
                 Voir {project.title}

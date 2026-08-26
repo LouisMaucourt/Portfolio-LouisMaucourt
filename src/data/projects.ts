@@ -11,7 +11,7 @@ export interface Project {
     howItWork: string;
     technologie: string[];
     websiteLink?: string;
-    githubLink?:string,
+    githubLink?: string,
 }
 
 export const projectData: Project[] = [
@@ -29,7 +29,7 @@ export const projectData: Project[] = [
             "/projects/studio-lab_2.webp",
             "/projects/studio-lab_3.webp",
         ],
-        technologie: ["TypeScript", "Next.js","GSAP", "Supabase", "Sanity", "Tailwind", "Mailchimp"],
+        technologie: ["TypeScript", "Next.js", "GSAP", "Supabase", "Sanity", "Tailwind", "Mailchimp"],
         howItWork:
             "Avant le développement, j’ai mené une veille technique pour identifier les outils les plus adaptés aux besoins du projet et aux contraintes de l’équipe pour y faire les choix techniques. Le projet utilise Next.js pour gérer l’ensemble des interfaces avec un gros point sur Gsap car l'animation prend une place importante. Supabase est utilisé pour l’authentification, la gestion des rôles et le stockage des données liées aux utilisateurs. Sanity sert à gérer le contenu du site de manière indépendante du code ! ",
     },
@@ -49,7 +49,7 @@ export const projectData: Project[] = [
         technologie: ["React", "TanStack Query", "Elysia", "Swagger", "Tailwind", "PostgreSQL", "Neon"],
         howItWork:
             "L’application repose sur une architecture frontend/backend séparée. Le frontend est développé avec React pour construire les différents dashboards et interfaces selon les rôles. TanStack Query est utilisé pour gérer les appels API, le cache des données et la synchronisation des états entre l’interface et le serveur. Le backend est construit avec Elysia, qui expose une API REST typée pour centraliser la logique métier comme la gestion des notes, absences ou utilisateurs. La documentation de l’API est générée avec Swagger pour faciliter les tests et le travail en équipe. Toutes les données sont stockées dans PostgreSQL via Neon, avec une structure pensée pour gérer les relations entre utilisateurs, classes et ressources pédagogiques.",
-},
+    },
     {
         idx: 3,
         mainImage: "/projects/livret-mockup.webp",
@@ -64,7 +64,7 @@ export const projectData: Project[] = [
             "/projects/livret-3.webp",
         ],
         websiteLink: "https://carnetvoyageur.fr/",
-        githubLink:"https://github.com/LouisMaucourt/Livret-saas",
+        githubLink: "https://github.com/LouisMaucourt/Livret-saas",
         technologie: ["React", "TypeScript", "Bun", "REST API", "PostgreSQL", "Tailwind"],
         howItWork:
             "Le frontend est développé avec React et TypeScript. Il consomme une API REST construite avec Bun qui gère les données des logements et leur configuration. Chaque logement est composé de sections modulaires (accès, règles, recommandations) enregistrées en base de données PostgreSQL. L’application sépare clairement deux usages : l’espace propriétaire, utilisé pour créer et organiser le contenu, et la vue voyageur, optimisée pour la consultation et le partage.",
@@ -86,21 +86,21 @@ export const projectData: Project[] = [
     {
         idx: 5,
         mainImage: "/projects/quizz-mockup.webp",
-        type: "Mini application web",
-        title: "Quizz",
+        type: "Application web",
+        title: "Quizz scientifique",
         description:
-            "Je voulais simplement créer mon propre système de quiz simple. Je voulais utiliser d'une part les données d'une API externe. Tous ces quizz affichent une série de questions, des réponses, et un score final.",
+            "À la base, j'ai créé ce quiz comme une simple blague autour de sujets complètement absurdes. Puis je me suis rendu compte que je pouvais en faire évoluer le concept. J'ai donc ajouté une base de données afin que chacun puisse créer, modifier ou supprimer librement ses propres quiz et partager ses idées. Chaque quiz propose une série de questions basées sur des critères prédéfinis, avec des réponses associées et un score final.",
         slug: "quizz",
         imgs: [
             "/projects/quizz-1.webp",
             "/projects/quizz-2.webp",
             "/projects/quizz-3.webp",
         ],
-        technologie: ["Bun", "TypeScript", "React","API Rest", "Tailwind"],
+        technologie: ["Bun", "Postgres", "Hono", "API REST", "React", "Tailwind", "TypeScript",],
         websiteLink: "https://contryquizz.louismaucourt.fun/",
-        githubLink: "https://github.com/LouisMaucourt/Country-Quizz", 
+        githubLink: "https://github.com/LouisMaucourt/Country-Quizz",
         howItWork:
-            "L’application consomme une API externe pour récupérer les questions ou, pour certains quiz, des données que j’ai créées. La logique de progression du quiz et le calcul du score sont gérés côté client avec React. À la fin de la session, un écran récapitule les réponses et le score obtenu.",
+            "Comme le reste de mes créations web, l'application est hébergée sur mon propre VPS. Chaque service est conteneurisé, du front-end au back-end, avec une base de données PostgreSQL. J'utilise notamment le type JSONB, particulièrement adapté ici pour stocker les différents critères, questions et réponses. L'application dispose également d'une API REST développée avec Hono pour le back-end, tandis que le front-end est développé avec React et TypeScript.",
     },
     {
         idx: 6,
@@ -120,4 +120,4 @@ export const projectData: Project[] = [
         howItWork:
             "Le projet est construit avec Three.js autour d’une architecture orientée objet pour gérer la scène 3D. Un modèle de voiture est intégré et animé en fonction du scroll via GSAP. Les paramètres de rendu évoluent progressivement (lumière, couleurs, ambiance) à travers des shaders personnalisés (vertex et fragment), synchronisés avec la progression de l’utilisateur.",
     },
-];
+]; 

@@ -35,10 +35,10 @@ export default function Preloader() {
 
   const hidden: React.CSSProperties = { opacity: 0 }; 
   return (
-    <div ref={containerRef} className="fixed inset-0 z-50 flex flex-col justify-around bg-black p-20 text-white">
-      <h1 ref={text1Ref} style={hidden} className="text-7xl font-bold">Louis Maucourt</h1>
-      <h1 ref={text2Ref} style={hidden} className="text-7xl font-bold mx-auto">Full-Stack</h1>
-      <h1 ref={text3Ref} style={hidden} className="text-7xl font-bold ml-auto">Developper</h1>
+    <div ref={containerRef} className="fixed inset-0 z-50 flex flex-col justify-around bg-black lg:p-20 p-3 text-white">
+      <h1 ref={text1Ref} style={hidden} className="lg:text-7xl text-5xl font-bold">Louis Maucourt</h1>
+      <h1 ref={text2Ref} style={hidden} className="lg:text-7xl text-5xl font-bold mx-auto">Full-Stack</h1>
+      <h1 ref={text3Ref} style={hidden} className="lg:text-7xl text-5xl font-bold ml-auto">Developper</h1>
     </div>
   );
 }

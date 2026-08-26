@@ -10,7 +10,7 @@ export default function ProjectsPage() {
       exit={{ "nav-forward": "nav-forward", "nav-back": "nav-back", "nav-down": "nav-up", default: "none" }}
       default="none"
     >
-      <TitleAnimation text="Une sélection de mes derniers travaux" className="!py-10"/>
+      <TitleAnimation text="Une sélection de mes derniers travaux"/>
       <Projects projects={projectData} />
     </ViewTransition>
   );
