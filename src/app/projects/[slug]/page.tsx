@@ -56,10 +56,8 @@ export default async function ProjectPage({ params }: Props) {
                 width={1500}
                 height={600}
                 loading={index === 0 ? "eager" : "lazy"}
-                className="w-full h-full object-cover rounded-lg shadow-mdx"
-                style={{
-                  viewTransitionName: `project-image-${project.slug}-${index}`,
-                }}
+                className="w-full h-auto object-cover rounded-lg shadow-md"
+                style={{ viewTransitionName: `project-image-${project.slug}-${index}` }}
               />
             </div>
           ))}
