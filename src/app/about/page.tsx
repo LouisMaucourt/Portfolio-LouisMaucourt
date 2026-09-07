@@ -1,3 +1,4 @@
+import { Button } from "@/components/assets/Button";
 import { ItemTechno, Techno } from "@/components/Techno";
 import { TextAnimation } from "@/components/TextAnimation";
 import { TitleAnimation } from "@/components/TitleAnimation";
@@ -12,17 +13,20 @@ export default function AboutPage() {
       default="none"
     >
     <div className="flex flex-col gap-52">
-      <div className="h-[60vh] ">
-        <TitleAnimation text="À propos de moi" />
-          <TextAnimation text="Développeur full-stack de 24 ans, diplômé d'un Bachelor Chef de Projet Digital puis d'un Master Développement Web. Cette double formation me permet de collaborer efficacement avec les équipes design, produit et technique — je comprends leurs contraintes et je parle leur langage. J'attache autant d'importance à la qualité du code qu'au produit finale" />
-        </div>
-        <div className="lg:h-[60vh] h-full">
-          <TitleAnimation text="Ce que je fais" />
-          <TextAnimation text="Je développe des sites web et des applications en prenant en charge aussi bien le frontend que le backend. Je travaille sur l’intégration d’interfaces, la création d’APIs, la gestion de bases de données, l’authentification et la mise en place d’espaces d’administration ou clients. J’utilise principalement une base React et TypeScript pour construire des projets structurés, adaptés aux besoins et faciles à faire évoluer." />
+        <div className="h-[80vh]">
+          <TitleAnimation text="À propos de moi" />
+          <TextAnimation
+            text={[
+              "Développeur Web / full-stack. Après un Bachelor Chef de Projet Digital et un Master Développement Web, je fais aussi bien du frontend que du backend : intégration d'interfaces, APIs, bases de données, authentification, espaces admin. J'utilise principalement une base React et TypeScript.",
+              "Ma valeur ajoutée, c'est cette double casquette produit/technique : je ne me contente pas d'exécuter un cahier des charges, je comprends les enjeux techniques derrière et je peux échanger directement avec les équipes design ou les clients sans perdre de temps en traduction. C'est aussi mon autonomie et cette volonté de toujours bien faire les choses, jusque dans les détails.",
+            ]}
+          />
+
         </div>
       <div>
         <TitleAnimation text="Mes technologies" />
-        <Techno items={skillCategories} />
+          <Techno items={skillCategories} />
+          <Button className="mt-6 !pl-0 hover:underline" href="/CV-LOUIS_MAUCOURT.pdf"> Voir mon Curriculum Vitae en détail</Button>
       </div>
       <Link
         href="mailto:louis.maucourt@outlook.fr"
