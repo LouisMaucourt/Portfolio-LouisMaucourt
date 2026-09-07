@@ -26,7 +26,9 @@ export default function AboutPage() {
       <div>
         <TitleAnimation text="Mes technologies" />
           <Techno items={skillCategories} />
-          <Button className="mt-6 !pl-0 hover:underline" href="/CV-LOUIS_MAUCOURT.pdf">           <Button className="mt-6 !pl-0 hover:underline" href="/CV-LOUIS_MAUCOURT.pdf"> Voir mon Curriculum Vitae en détail</Button></Button>
+          <Button target="_blank" className="mt-6 !pl-0 hover:underline" href="/CV-LOUIS_MAUCOURT.pdf">
+            Voir mon CV en détail
+          </Button>
       </div>
       <Link
         href="mailto:louis.maucourt@outlook.fr"
