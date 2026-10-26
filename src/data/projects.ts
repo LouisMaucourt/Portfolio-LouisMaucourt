@@ -41,7 +41,7 @@ export const projectData: Project[] = [
         description:
             "Application fullstack en cours de développement, conçue pour organiser mes projets web et structurer leur réalisation en tâches et sous-tâches : design, développement, tests et recettage. Ce projet me permet d'explorer une architecture modulaire, une API REST typée et la synchronisation des données entre le front et le back, avec l'objectif de proposer un outil adaptable aux besoins de chaque utilisateur.",
         slug: "task-manager",
-        websiteLink: "",
+        githubLink: "https://github.com/LouisMaucourt/Task_Manager",
         technologie: [
             "TypeScript",
             "React",
@@ -124,7 +124,7 @@ export const projectData: Project[] = [
         ],
         technologie: ["Bun", "Postgres", "Hono", "API REST", "React", "Tailwind", "TypeScript",],
         websiteLink: "https://contryquizz.louismaucourt.fun/",
-        githubLink: "https://github.com/LouisMaucourt/Country-Quizz",
+        githubLink: "https://github.com/LouisMaucourt/Quizz",
         howItWork:
             "Comme le reste de mes créations web, l'application est hébergée sur mon propre VPS. Chaque service est conteneurisé, du front-end au back-end, avec une base de données PostgreSQL. J'utilise notamment le type JSONB, particulièrement adapté ici pour stocker les différents critères, questions et réponses. L'application dispose également d'une API REST développée avec Hono pour le back-end, tandis que le front-end est développé avec React et TypeScript.",
     },
