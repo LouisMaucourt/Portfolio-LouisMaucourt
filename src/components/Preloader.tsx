@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 
 export default function Preloader() {
   const [loading, setLoading] = useState(true);
@@ -28,19 +28,42 @@ export default function Preloader() {
         },
       });
 
-      tl.fromTo(text1Ref.current,
+      tl.fromTo(
+        text1Ref.current,
         { opacity: 0, x: -100, filter: "blur(10px)" },
-        { opacity: 1, x: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out" },
-        0.2
-      ).fromTo(text2Ref.current,
-        { opacity: 0, y: 50, filter: "blur(10px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out" },
-        0.6
-      ).fromTo(text3Ref.current,
-        { opacity: 0, x: 100, filter: "blur(10px)" },
-        { opacity: 1, x: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out" },
-        1
-      );
+        {
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          duration: 1.2,
+          ease: "power3.out",
+        },
+        0.2,
+      )
+        .fromTo(
+          text2Ref.current,
+          { opacity: 0, y: 50, filter: "blur(10px)" },
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 1.2,
+            ease: "power3.out",
+          },
+          0.6,
+        )
+        .fromTo(
+          text3Ref.current,
+          { opacity: 0, x: 100, filter: "blur(10px)" },
+          {
+            opacity: 1,
+            x: 0,
+            filter: "blur(0px)",
+            duration: 1.2,
+            ease: "power3.out",
+          },
+          1,
+        );
     }, containerRef);
 
     return () => ctx.revert();
@@ -56,11 +79,17 @@ export default function Preloader() {
       <h1 ref={text1Ref} className="lg:text-7xl text-5xl font-bold opacity-0">
         Louis Maucourt
       </h1>
-      <h1 ref={text2Ref} className="lg:text-7xl text-5xl font-bold mx-auto opacity-0">
-        Full-Stack
+      <h1
+        ref={text2Ref}
+        className="lg:text-7xl text-5xl font-bold mx-auto opacity-0"
+      >
+        FullStack
       </h1>
-      <h1 ref={text3Ref} className="lg:text-7xl text-5xl font-bold ml-auto opacity-0">
-        Developper
+      <h1
+        ref={text3Ref}
+        className="lg:text-7xl text-5xl font-bold ml-auto opacity-0"
+      >
+        Développeur
       </h1>
     </div>
   );

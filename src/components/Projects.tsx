@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import { Project } from "@/data/projects";
-import { useEffect, useRef } from "react";
-import { ViewTransition } from "react";
-import Link from "next/link";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, ViewTransition } from "react";
+import type { Project } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,7 +80,7 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         transformOrigin: "right center",
         stagger: 0.15,
       },
-      "<" 
+      "<",
     );
   }, []);
 
@@ -93,7 +92,11 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     >
       <div className="flex flex-col lg:flex-row h-full gap-8 lg:py-12 py-7 pb-25">
         {projects.map((project) => (
-          <ViewTransition key={project.idx} name={`photo-${project.idx}`} share="morph">
+          <ViewTransition
+            key={project.idx}
+            name={`photo-${project.idx}`}
+            share="morph"
+          >
             <Link
               href={`/projects/${project.slug}`}
               className="project-item block lg:flex-shrink-0 group relative opacity-0"
@@ -107,6 +110,7 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                 alt={project.title}
                 width={1900}
                 height={1080}
+                loading="eager"
                 sizes="(min-width: 1024px) 66vw, 100vw"
                 className="rounded-lg lg:h-[70vh] h-full w-full transition duration-300 group-hover:invert object-contain"
               />

@@ -15,26 +15,9 @@ export interface Project {
 }
 
 export const projectData: Project[] = [
+
     {
         idx: 1,
-        mainImage: "/projects/studio-lab.png",
-        title: "Studio Lab",
-        type: "Site Web / Application",
-        description:
-            "Studio Lab est un projet réalisé dans le cadre de mon ancienne agence web. L’objectif était de refondre leur site principal et de structurer un espace client permettant aux utilisateurs de retrouver leurs factures, gérer leurs abonnements et accéder à leurs documents. Le travail s’est fait en collaboration avec le pôle design pour la partie interface et avec l’équipe produit pour définir les fonctionnalités de l’espace client. Le projet se compose de trois parties : un site public, un dashboard administrateur et un espace client sécurisé.",
-        slug: "studio-lab",
-        websiteLink: "https://studio-lab.fr/",
-        imgs: [
-            "/projects/studio-lab_4.webp",
-            "/projects/studio-lab_2.webp",
-            "/projects/studio-lab_3.webp",
-        ],
-        technologie: ["TypeScript", "Next.js", "GSAP", "Supabase", "Sanity", "Tailwind", "Mailchimp"],
-        howItWork:
-            "Avant le développement, j’ai mené une veille technique pour identifier les outils les plus adaptés aux besoins du projet et aux contraintes de l’équipe pour y faire les choix techniques. Le projet utilise Next.js pour gérer l’ensemble des interfaces avec un gros point sur Gsap car l'animation prend une place importante. Supabase est utilisé pour l’authentification, la gestion des rôles et le stockage des données liées aux utilisateurs. Sanity sert à gérer le contenu du site de manière indépendante du code ! ",
-    },
-    {
-        idx: 2,
         mainImage: "/projects/hitoko-mockup.webp",
         type: "Application web",
         title: "Hitoko",
@@ -49,6 +32,31 @@ export const projectData: Project[] = [
         technologie: ["React", "TanStack Query", "Elysia", "Swagger", "Tailwind", "PostgreSQL", "Neon"],
         howItWork:
             "L’application repose sur une architecture frontend/backend séparée. Le frontend est développé avec React pour construire les différents dashboards et interfaces selon les rôles. TanStack Query est utilisé pour gérer les appels API, le cache des données et la synchronisation des états entre l’interface et le serveur. Le backend est construit avec Elysia, qui expose une API REST typée pour centraliser la logique métier comme la gestion des notes, absences ou utilisateurs. La documentation de l’API est générée avec Swagger pour faciliter les tests et le travail en équipe. Toutes les données sont stockées dans PostgreSQL via Neon, avec une structure pensée pour gérer les relations entre utilisateurs, classes et ressources pédagogiques.",
+    },
+    {
+        idx: 2,
+        mainImage: "/projects/task-manager.webp",
+        title: "Task Manager",
+        type: "Application Web",
+        description:
+            "Application fullstack en cours de développement, conçue pour organiser mes projets web et structurer leur réalisation en tâches et sous-tâches : design, développement, tests et recettage. Ce projet me permet d'explorer une architecture modulaire, une API REST typée et la synchronisation des données entre le front et le back, avec l'objectif de proposer un outil adaptable aux besoins de chaque utilisateur.",
+        slug: "task-manager",
+        websiteLink: "",
+        technologie: [
+            "TypeScript",
+            "React",
+            "React Router",
+            "Bun",
+            "Elysia",
+            "PostgreSQL",
+            "TanStack Query",
+            "Better Auth",
+            "Tailwind CSS",
+            "Shadcn",
+            "Docker",
+        ],
+        howItWork:
+            "Le frontend repose sur React et TanStack Query pour gérer les requêtes, le cache des données et leur synchronisation avec le serveur. La gestion du cache est un axe d'exploration central du projet, notamment pour optimiser les mises à jour des données et limiter les requêtes inutiles. ! Le backend utilise Bun et Elysia pour exposer une API REST typée, avec PostgreSQL pour la persistance des données et Better Auth pour l'authentification. L'architecture modulaire sépare les routes, la logique métier, les modèles et les fonctions d'accès à l'API.",
     },
     {
         idx: 3,
@@ -68,6 +76,24 @@ export const projectData: Project[] = [
         technologie: ["React", "TypeScript", "Bun", "REST API", "PostgreSQL", "Tailwind"],
         howItWork:
             "Le frontend est développé avec React et TypeScript. Il consomme une API REST construite avec Bun qui gère les données des logements et leur configuration. Chaque logement est composé de sections modulaires (accès, règles, recommandations) enregistrées en base de données PostgreSQL. L’application sépare clairement deux usages : l’espace propriétaire, utilisé pour créer et organiser le contenu, et la vue voyageur, optimisée pour la consultation et le partage.",
+    },
+        {
+        idx: 4,
+        mainImage: "/projects/studio-lab.png",
+        title: "Studio Lab",
+        type: "Site Web / Application",
+        description:
+            "Studio Lab est un projet réalisé dans le cadre de mon ancienne agence web. L’objectif était de refondre leur site principal et de structurer un espace client permettant aux utilisateurs de retrouver leurs factures, gérer leurs abonnements et accéder à leurs documents. Le travail s’est fait en collaboration avec le pôle design pour la partie interface et avec l’équipe produit pour définir les fonctionnalités de l’espace client. Le projet se compose de trois parties : un site public, un dashboard administrateur et un espace client sécurisé.",
+        slug: "studio-lab",
+        websiteLink: "https://studio-lab.fr/",
+        imgs: [
+            "/projects/studio-lab_4.webp",
+            "/projects/studio-lab_2.webp",
+            "/projects/studio-lab_3.webp",
+        ],
+        technologie: ["TypeScript", "Next.js", "GSAP", "Supabase", "Sanity", "Tailwind", "Mailchimp"],
+        howItWork:
+            "Avant le développement, j’ai mené une veille technique pour identifier les outils les plus adaptés aux besoins du projet et aux contraintes de l’équipe pour y faire les choix techniques. Le projet utilise Next.js pour gérer l’ensemble des interfaces avec un gros point sur Gsap car l'animation prend une place importante. Supabase est utilisé pour l’authentification, la gestion des rôles et le stockage des données liées aux utilisateurs. Sanity sert à gérer le contenu du site de manière indépendante du code ! ",
     },
     // {
     //     idx: 4,
